@@ -1,0 +1,168 @@
+
+<html>
+    <head>
+ <style>
+   body{background-color: lightblue;}
+   
+    #Section2{display: none};
+    
+ </style>
+    </head>
+ 
+    <body>
+ 
+ 
+ 
+      <h1>Booking Details</h1>
+      <form name="myform" onsubmit="return Validpassword()" action="newHTML.html" method="post">
+ 
+ 
+ 
+       <div id="Section1">
+       <!--Section 1 Radio button code starts--> 
+       
+ <br><b> Choose your destination: </b><br>
+ <input type="radio" name="one" id="One Way" value="One Way" onclick=" checkButton()">One Way<br> 
+ <input type="radio" name="one" id="Round Trip" value="Round Trip"  onclick=" checkButton()" >Round Trip<br> 
+ 
+ 
+ <!--Radio button code Ends--> 
+ 
+ <!--<button type="button" onclick=" checkButton()"> Submit </button>--> 
+     
+ <h3 id="disp" style= "color:green">               </h3>
+ <h4 id="error" style= "color:red">                </h4>
+ </div>        
+ <!--Section  1 Ends -->             
+ <div id="Section2">
+ <!--Section  2 - Make invisible until radio button selected-->       
+       
+      From:<input type="text" name="From">   To:<input type="text" name="To"> <br><br>
+      Departure:<input type="date" name="Departure">  Return Date: <input type="date" name="Return Date"><br><br>
+
+      <h2> Number Of Passengers</h2>
+      Adults:<input type="text" name="Adults">  Children:<input type="text" name="Children"><br><br>
+      <h3> Passengers 1 details</h3>
+       Name: <input type="text" name="myname" id="newmine" pattern="[a-zA-Z]{5,}" title="Only Alphabets with minimum five Letters">
+         Gender:<input type="radio" onclick="checkbutton1()" id="Male"> Male   <input type="radio" id="Female">Female 
+         Age:<input type="number" name="Age">              
+         <h3> Passengers 2 details</h3>
+         Name: <input type="text" name="myname" id="newmine" pattern="[a-zA-Z]{5,}" title="Only Alphabets with minimum five Letters">
+              Gender:<input type="radio" id="Male"> Male   <input type="radio" id="Female">Female 
+              Age:<input type="number" name="Age">  
+              <h3> Passengers 3 details</h3>
+              Name: <input type="text" name="myname" id="newmine" pattern="[a-zA-Z]{5,}" title="Only Alphabets with minimum five Letters">
+                 Gender:<input type="radio" id="Male"> Male   <input type="radio" id="Female">Female 
+                 Age:<input type="number" name="Age">  
+                           
+                 <h4> Payment Details</h4>
+                 Full Name:<input type="text">
+                 Mobile Number: <input type="number" name="mobile" id="newmine">
+                 Email: <input type="text" name="myemail" id="newmine" >
+
+    
+        
+         Submit<input type="submit" value="Submit">
+     <!--Section  2 Ends -->    <!--section2.style.display = 'block'; --> 
+     </div>      
+     </form>
+ 
+     <script>
+ function checkButton() 
+                     {  
+                         if(document.getElementById('One Way').checked) 
+                          { 
+                            document.getElementById("disp").innerHTML = document.getElementById("One Way").value; 
+                            document.getElementById("Section2").style.display = "block";
+                           } 
+                         else if(document.getElementById('Round Trip').checked) 
+                              { 
+                                document.getElementById("disp").innerHTML = document.getElementById("Round Trip").value;   
+                                document.getElementById("Section2").style.display = "block";
+                               } 
+                                        else { 
+                                                document.getElementById("error").innerHTML 
+                                                    = "You have not selected a destination"; 
+                                             } 
+                           
+                                           } 
+   
+ 
+            function Validpassword()
+               {
+                  let password1=document.myform.pass1.value;
+                  let cpassword1=document.myform.cpass1.value;
+                  if (password1.length<6)
+                         {
+                            alert( "enter the 6 charcters")
+                            return false;
+                         }
+                  if (password1==cpassword1) 
+                         {
+                            return true;
+                         }
+                      else 
+                           {
+                             alert( "Both must be same")
+                             return false;
+                           }                     
+                          
+ 
+                let username=document.getElementById("newmine").value;
+                  
+                  if (username== "null" || username == "")
+                         {
+                            alert( "enter correctname");
+                            return false;
+                         }
+ 
+            let mymail=document.myform.myemail.value;
+            let attherate=mymail.indexOf("@");
+            let atthedot=mymail.lastIndexOf(".");
+ 
+            if (attherate<1 || atthedot<attherate+2 || atthedot>=mymail.length)
+                   {
+                      alert( "enter the correct email");
+                      return false;
+                   }
+ 
+             
+
+                         let Departure=new Date1();
+                  let dep=Date1(document.myform.Departure.value)
+ 
+                  if (dep<curdate)
+                         {
+                            alert( "enter the Valid Date");
+                            return false;
+                         }
+                         let Return=new Date2();
+
+                  let ret=Date2(document.myform.Departure.value)
+ 
+                  if (ret<curdate)
+                          {
+                            alert( "enter the Valid Date");
+                            return false;
+                         }
+                         let mobile1=(document.myform.mobile.value)
+ 
+ if (mobile1.length==10)
+     {
+        return true
+     }
+  else      
+         {
+           alert( "enter the correct 10 digits number");
+           return false;
+        }
+ 
+ 
+ 
+       } 
+ 
+     </script>
+    </body>
+ 
+  
+ </html>
